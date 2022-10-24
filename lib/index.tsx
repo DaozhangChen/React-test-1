@@ -1,8 +1,10 @@
-import Icon from './icon'
 import ReactDOM from 'react-dom'
 import React from 'react'
+import DE from './dialog/dialogExample'
+
+
 
 
 ReactDOM.render(<div>
-    <Icon name='qq' />
-</div>, document.querySelector('#root'))
+    <DE />
+</div >, document.querySelector('#root'))
