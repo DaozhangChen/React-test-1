@@ -1,5 +1,7 @@
-import React from 'react';
+import Icon from './icon'
 import ReactDOM from 'react-dom'
-import Button from './button'
+import React from 'react'
 
-ReactDOM.render(<Button />, document.body)
+ReactDOM.render(<div>
+    <Icon name='weChat' />
+</div>, document.body)
