@@ -2,9 +2,7 @@ import Icon from './icon'
 import ReactDOM from 'react-dom'
 import React from 'react'
 
-const fn: React.MouseEventHandler = (e) => {
-    console.log(e)
-}
+
 ReactDOM.render(<div>
-    <Icon name='qq' onClick={fn} />
+    <Icon name='qq' />
 </div>, document.querySelector('#root'))
