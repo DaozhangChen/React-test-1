@@ -1,8 +1,10 @@
+[class^=fui-]{
+    box-sizing: border-box;
+}
 .fui-dialog{
     position: fixed;
     background: white;
-    height: 200px;
-    width: 200px;
+    width: 15em;
     border:100px;
     top: 50%;
     left: 50%;
@@ -17,5 +19,31 @@
         left: 0;
         background: fade-out($color: black, $amount: 0.5);
     
+    }
+    &-header{
+        font-size: 20px;
+        padding: 10px;
+        border-bottom: 1px solid gray;
+    }
+    &-main{
+        font-size: 18px;
+        min-height: 6em;
+        padding: 10px;
+        border-bottom:1px solid gray ;
+    }
+    &-footer{
+        padding: 10px;
+        right: 0;
+        display: flex;
+        justify-content: end;
+        button{
+            margin-left: 4px;
+        }
+    }
+    &-close{
+        position: absolute;
+        right: 0;
+        top: 0;
+        fill: aqua;
     }
 }
