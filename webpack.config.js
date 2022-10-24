@@ -10,7 +10,7 @@ module.exports={
     },
     output:{
         path:path.resolve(__dirname,'dist/lib'),
-        library:'FUI',
+        library:'fui',
         libraryTarget:'umd'
     },
     module:{
