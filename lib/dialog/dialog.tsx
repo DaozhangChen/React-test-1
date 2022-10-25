@@ -1,4 +1,4 @@
-import React, { Fragment, MouseEventHandler, ReactElement } from "react";
+import React, {Fragment, MouseEventHandler, ReactElement, ReactFragment} from "react";
 import './dialog.scss'
 import Icon from '../icon'
 import ReactDOM from "react-dom";
@@ -50,6 +50,50 @@ const alert=(content:string)=>{
     ReactDOM.render(component,div)
 }
 
-export {alert}
+const confirm=(context:string,yes?:()=>void,no?:()=>void)=>{
+    const onYes=()=>{
+        ReactDOM.render(React.cloneElement(component,{visible:false}),div);
+        ReactDOM.unmountComponentAtNode(div)
+        div.remove()
+        yes?.()
+    }
+    const onNo=()=>{
+        ReactDOM.render(React.cloneElement(component,{visible:false}),div);
+        ReactDOM.unmountComponentAtNode(div)
+        div.remove()
+        no?.()
+    }
+    const component=(
+        <Dialog visible={true}
+                onClose={()=>{onNo()}}
+                buttons={[<button onClick={onYes}>yes</button>
+                    ,<button onClick={onNo}>no</button>]}
+        >
+            {context}
+        </Dialog>
+    )
+    const div=document.createElement('div')
+    document.body.append(div)
+    ReactDOM.render(component,div)
+}
+
+const modal=(context:ReactElement|ReactFragment)=>{
+    const onClose=()=>{
+        ReactDOM.render(React.cloneElement(component,{visible:false}),div);
+        ReactDOM.unmountComponentAtNode(div)
+        div.remove()
+    }
+    const component=(
+        <Dialog visible={true} onClose={onClose}>
+        {context}
+        </Dialog>
+    )
+    const div=document.createElement('div')
+    document.body.append(div)
+    ReactDOM.render(component,div)
+    return onClose
+}
+
+export {alert,confirm,modal}
 
 export default Dialog;
