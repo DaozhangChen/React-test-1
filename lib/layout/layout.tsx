@@ -1,8 +1,13 @@
 import React from "react";
+interface Props extends React.HtmlHTMLAttributes<HTMLElement>{
 
-const Layout=()=>{
+}
+const Layout:React.FunctionComponent<Props> =(props)=>{
+    const {className,...rest} = props
     return (
-        <div>header</div>
+        <div className={className} {...rest}>
+            {props.children}
+        </div>
     )
 }
 
