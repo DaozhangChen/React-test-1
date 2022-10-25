@@ -6,7 +6,7 @@ import ReactDOM from "react-dom";
 interface Props {
     visible: boolean
     children: any | undefined
-    buttons: Array<ReactElement>
+    buttons?: Array<ReactElement>
     onClose?: MouseEventHandler
     onCloseMask?: boolean
 }
@@ -23,7 +23,7 @@ const Dialog: React.FunctionComponent<Props> = (props) => {
                 <main className="fui-dialog-main">{props.children}</main>
                 <footer className="fui-dialog-footer">
                     {
-                        props.buttons.map(
+                        props.buttons?.map(
                             (button, index) =>
                                 React.cloneElement(button, { key: index })
                         )
@@ -38,5 +38,18 @@ const Dialog: React.FunctionComponent<Props> = (props) => {
         ReactDOM.createPortal(x, document.body)
     )
 }
+
+const alert=(content:string)=>{
+    const component=<Dialog visible={true} onClose={()=>{
+        ReactDOM.render(React.cloneElement(component,{visible:false}),div);
+        ReactDOM.unmountComponentAtNode(div)
+        div.remove()
+    }}>{content}</Dialog>
+    const div=document.createElement('div')
+    document.body.append(div)
+    ReactDOM.render(component,div)
+}
+
+export {alert}
 
 export default Dialog;

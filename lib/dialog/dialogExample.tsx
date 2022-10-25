@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import Dialog from "./dialog"
+import Dialog, {alert} from "./dialog"
 
 
 
@@ -16,6 +16,7 @@ const DE = () => {
             } onClose={() => setX(false)} onCloseMask={true}>
                 <strong>hi</strong>
             </Dialog>
+            <button onClick={()=>alert('你好')}>你好</button>
         </div>
     )
 }
